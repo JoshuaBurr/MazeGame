@@ -77,6 +77,12 @@ function DrawGame(){
   context.fill();
   context.stroke();
 }
+function BackToNormal(){
+  EraseGame();
+Playerheight = 25;
+Playerwidth = 25;
+
+}
 function NextFrame(){
       EraseGame();
   if (Playerx > 50 - Playerwidth && Playerx < 70  && Playery <100 )
@@ -137,10 +143,10 @@ for(var key in keysDown)
 //space bar ability
     else if (value == 32){
     if (Playerheight > 19){
-  EraseGame()
+  EraseGame();
 Playerheight = 12;
 Playerwidth = 12;
-  Ability()
+  setTimeout(BackToNormal, 3000);
       }
     }
   }
