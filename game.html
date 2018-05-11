@@ -1,12 +1,13 @@
 <!DOCTYPE html>
   <html>
     <body>
-
       <script>
 /******************************************
-Game Version 1.0 Made by Josh Burr
+Author: Josh Burr
+Last Modified Date: 2018-05-11
+Program Name: Super Maze Runner
+Sources: W3Schools and fellow peers
 ******************************************/
-
 //Canvas Setup
 var canvas = document.createElement('canvas');
 var width = 600;
@@ -14,27 +15,16 @@ var height = 400;
 canvas.width=width;
 canvas.height=height;
 var context = canvas.getContext('2d');
-window.onload = function() {
-  document.body.appendChild(canvas);
-};
-
+window.onload = function() {document.body.appendChild(canvas);};
 context.fillStyle="black";
 context.fillRect(0,0,width,height);
-
-function DisplayFrames(){
-setInterval(NextFrame,20);
-}
+function DisplayFrames(){setInterval(NextFrame,20);}
 //Event Listener
 var keysDown = {};
 window.addEventListener("keydown", function(event)
- {
-  keysDown[event.keyCode] = true;
- });
+ {keysDown[event.keyCode] = true;});
 window.addEventListener("keyup", function(event)
-  {
-    delete keysDown[event.keyCode];
-  });
-
+  {delete keysDown[event.keyCode];});
 //Global Variables
 var Playerheight;
 var Playerwidth;
@@ -52,12 +42,6 @@ var oldPlayerx;
 var oldPlayery;
 oldPlayerx=10;
 oldPlayery=10;
-var sheight;
-var swidth;
-sheight = Playerheight - 5;
-swidth = Playerwidth - 5
-
-
 // Functions
 function EraseGame(){
   context.beginPath();
@@ -66,116 +50,104 @@ function EraseGame(){
   context.fill();
   context.stroke();
 }
-
 function DrawGame(){
-context.beginPath();
-context.fillStyle = "purple";
-context.fillRect(Playerx,Playery,Playerwidth,Playerheight);
-context.fill();
-context.stroke();
-context.beginPath();
-context.fillStyle = "red";
-context.fillRect(50,0,20,100);
-context.fill();
-context.stroke();
-context.beginPath();
-context.fillStyle = "red";
-context.fillRect(0,140,150,20);
-context.fill();
-context.stroke();
-context.beginPath();
-context.fillStyle = "red";
-context.fillRect(100,60,175,20);
-context.fill();
-context.stroke();
-context.beginPath();
-context.fillStyle = "red";
-context.fillRect(100,60,50,100);
-context.fill();
-context.stroke();
-
+  context.beginPath();
+  context.fillStyle = "purple";
+  context.fillRect(Playerx,Playery,Playerwidth,Playerheight);
+  context.fill();
+  context.stroke();
+  context.beginPath();
+  context.fillStyle = "red";
+  context.fillRect(50,0,20,100);
+  context.fill();
+  context.stroke();
+  context.beginPath();
+  context.fillStyle = "red";
+  context.fillRect(0,140,150,20);
+  context.fill();
+  context.stroke();
+  context.beginPath();
+  context.fillStyle = "red";
+  context.fillRect(100,60,175,20);
+  context.fill();
+  context.stroke();
+  context.beginPath();
+  context.fillStyle = "red";
+  context.fillRect(100,60,50,100);
+  context.fill();
+  context.stroke();
 }
-function Ability(){
-  setTimeout(NextFrame, 3000)
-
-}
-
-
 function NextFrame(){
-EraseGame();
-if (Playerx > 50 - Playerwidth && Playerx < 70  && Playery <100 ){
+      EraseGame();
+  if (Playerx > 50 - Playerwidth && Playerx < 70  && Playery <100 )
+  {//resets player x, y and height and width if they touch the edge of the maze
   Playerx = 10;
   Playery = 10;
   Playerheight = 25;
   Playerwidth = 25;
-}
-if (Playery > 140 - Playerheight && Playerx < 150 && Playery < 160){
+  }
+  if (Playery > 140 - Playerheight && Playerx < 150 && Playery < 160)
+  {
   Playerx = 10;
   Playery = 10;
   Playerheight = 25;
   Playerwidth = 25;
-}
-if (Playerx > 100 - Playerwidth && Playerx < 275 && Playery > 40 + Playerheight && Playery < 80){
+  }
+  if (Playerx > 100 - Playerwidth && Playerx < 275 && Playery > 40 + Playerheight && Playery < 80)
+  {
   Playerx = 10;
   Playery = 10;
   Playerheight = 25;
   Playerwidth = 25;
-}
-if (Playerx > 100 - Playerwidth && Playerx < 150 && Playery > 40 + Playerheight && Playery < 160) {
+  }
+  if (Playerx > 100 - Playerwidth && Playerx < 150 && Playery > 40 + Playerheight && Playery < 160)
+  {
   Playerx = 10;
   Playery = 10;
   Playerheight = 25;
   Playerwidth = 25;
-}
-
+  }
 DrawGame();
-
-if (Playerx < 0)  {
+  if (Playerx < 0)
+  {
   Playerx = 0;
-}
-if (Playerx > 575){
+  }
+  if (Playerx > 575)
+  {
   Playerx = 575;
-}
-if (Playery < 0) {
+  }
+  if (Playery < 0)
+  {
   Playery = 0;
-}
-if (Playery > 375){
+  }
+  if (Playery > 375)
+  {
   Playery = 375;
-}
-
-
-
+  }
 oldPlayery=Playery;
 oldPlayerx=Playerx;
-
-
-
-
-
 //keydown event
-for(var key in keysDown) {
+for(var key in keysDown)
+  {
   var value = Number(key);
-  if(value == 40) {//up arrow
-  Playery += 2  ;
-}   else if (value == 38) {//down arrow
-  Playery += -2 ;
-} else if (value == 39){//right arrow
-  Playerx += 2 ;
-} else if (value == 37){//left arrow
-  Playerx += -2 ;
-} else if (value == 32){//space bar
-if (Playerheight > 19){
+      if(value == 40) {Playery += 2  ;}//up arrow
+    else if (value == 38) {Playery += -2 ;}//down arrow
+    else if (value == 39){Playerx += 2 ;}//right arrow
+    else if (value == 37){Playerx += -2 ;}//left arrow
+//space bar ability
+    else if (value == 32){
+    if (Playerheight > 19){
   EraseGame()
 Playerheight = 12;
 Playerwidth = 12;
-Ability()
-   }
-  }
+  Ability()
+      }
+    }
   }
 }
 // Animate the game
 DisplayFrames();
-
       </script>
+<p>Move Using Up, Down, Left and Right. Space bar is the special ability which reduces your size</p>
     </body>
   </html>
