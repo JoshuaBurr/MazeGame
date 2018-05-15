@@ -76,12 +76,28 @@ function DrawGame(){
   context.fillRect(100,60,50,100);
   context.fill();
   context.stroke();
+  context.beginPath();
+  context.fillStyle = "blue";
+  context.fillRect(350,200,50,50);
+  context.fill();
+  context.stroke();
 }
 function BackToNormal(){
   EraseGame();
 Playerheight = 25;
 Playerwidth = 25;
-
+}
+function Ability(){
+  for(var key in keysDown)
+  {
+    var value = Number(key);
+         if (value == 32){
+    EraseGame();
+  Playerheight = 12;
+  Playerwidth = 12;
+    setTimeout(BackToNormal, 3000);
+                         }
+    }
 }
 function NextFrame(){
       EraseGame();
@@ -99,14 +115,14 @@ function NextFrame(){
   Playerheight = 25;
   Playerwidth = 25;
   }
-  if (Playerx > 100 - Playerwidth && Playerx < 275 && Playery > 40 + Playerheight && Playery < 80)
+  if (Playerx > 100 - Playerwidth && Playerx < 275 && Playery > 60 - Playerheight && Playery < 80)
   {
   Playerx = 10;
   Playery = 10;
   Playerheight = 25;
   Playerwidth = 25;
   }
-  if (Playerx > 100 - Playerwidth && Playerx < 150 && Playery > 40 + Playerheight && Playery < 160)
+  if (Playerx > 100 - Playerwidth && Playerx < 150 && Playery > 60 - Playerheight && Playery < 160)
   {
   Playerx = 10;
   Playery = 10;
@@ -133,6 +149,8 @@ DrawGame();
 oldPlayery=Playery;
 oldPlayerx=Playerx;
 //keydown event
+Ability();
+delete Ability();
 for(var key in keysDown)
   {
   var value = Number(key);
@@ -140,15 +158,6 @@ for(var key in keysDown)
     else if (value == 38) {Playery += -2 ;}//down arrow
     else if (value == 39){Playerx += 2 ;}//right arrow
     else if (value == 37){Playerx += -2 ;}//left arrow
-//space bar ability
-    else if (value == 32){
-    if (Playerheight > 19){
-  EraseGame();
-Playerheight = 12;
-Playerwidth = 12;
-  setTimeout(BackToNormal, 3000);
-      }
-    }
   }
 }
 // Animate the game
