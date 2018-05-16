@@ -96,8 +96,9 @@ function Ability(){
   Playerheight = 12;
   Playerwidth = 12;
     setTimeout(BackToNormal, 3000);
+    delete Ability();
                          }
-    }
+  }
 }
 function NextFrame(){
       EraseGame();
@@ -150,7 +151,6 @@ oldPlayery=Playery;
 oldPlayerx=Playerx;
 //keydown event
 Ability();
-delete Ability();
 for(var key in keysDown)
   {
   var value = Number(key);
