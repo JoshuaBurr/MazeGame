@@ -1,6 +1,7 @@
 <!DOCTYPE html>
   <html>
     <body>
+      <p id="win"></p>
       <script>
 /******************************************
 Author: Josh Burr
@@ -42,6 +43,7 @@ var oldPlayerx;
 var oldPlayery;
 oldPlayerx=10;
 oldPlayery=10;
+context.font = "45px Arial";
 // Functions
 function EraseGame(){
   context.beginPath();
@@ -80,6 +82,12 @@ function DrawGame(){
   context.fillStyle = "blue";
   context.fillRect(350,200,50,50);
   context.fill();
+  context.stroke();
+}
+function DisplayText(text){
+  context.beginpath();
+  context.fillstyle = "White";
+  context.fillText(text, 30 , 30);
   context.stroke();
 }
 function BackToNormal(){
