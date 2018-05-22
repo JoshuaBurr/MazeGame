@@ -26,6 +26,7 @@ window.addEventListener("keydown", function(event)
 window.addEventListener("keyup", function(event)
   {delete keysDown[event.keyCode];});
 //Global Variables
+var playerHasWon=false;
 var Playerheight;
 var Playerwidth;
 Playerheight=25;
@@ -54,6 +55,8 @@ function EraseCharacter()
 }
 function EraseGame()
 {
+  context.fillStyle = "black";
+  context.fillRect(0,0,width,height);
 }
 function DrawGame()
 {
@@ -90,17 +93,18 @@ function DrawGame()
 }
 function DisplayText(text)
 {
+  document.getElementById("Winner")
+  context.fillStyle = "black";
+  context.fillRect(0,0,width,height);
   context.beginpath();
   context.fillstyle = "White";
-  context.fillText(text, 30 , 30);
+  context.fillText(text, 100 , 100);
   context.stroke();
 }
 function Win()
 {
-  EraseCharacter();
-  DisplayText("Winner");
-  delete NextFrame();
-  Win();
+  EraseGame();
+  DisplayText();
 }
 function BackToNormal()
 {
@@ -154,9 +158,14 @@ EraseCharacter();
   }
   if (Playerx > 350 - Playerwidth && Playerx < 400 && Playery > 200 - Playerheight && Playery < 250)
   {
+    playerHasWon=true;
+  }
+  if(playerHasWon){
+  EraseGame();
   Win();
   }
-  else{DrawGame();}
+  if(!playerHasWon){DrawGame();}
+
   if (Playerx < 0)
   {
   Playerx = 0;
