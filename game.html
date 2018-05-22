@@ -43,7 +43,7 @@ var oldPlayerx;
 var oldPlayery;
 oldPlayerx=10;
 oldPlayery=10;
-context.font = "45px Arial";
+context.font = "30px Arial";
 // Functions
 function EraseCharacter()
 {
@@ -55,7 +55,7 @@ function EraseCharacter()
 }
 function EraseGame()
 {
-  context.fillStyle = "black";
+  context.fillStyle = "white";
   context.fillRect(0,0,width,height);
 }
 function DrawGame()
@@ -91,14 +91,11 @@ function DrawGame()
   context.fill();
   context.stroke();
 }
-function DisplayText(text)
+function DisplayText()
 {
-  document.getElementById("Winner")
-  context.fillStyle = "black";
-  context.fillRect(0,0,width,height);
   context.beginpath();
-  context.fillstyle = "White";
-  context.fillText(text, 100 , 100);
+  context.fillstyle = "blue";
+  context.fillText("you da winner", 100 , 100);
   context.stroke();
 }
 function Win()
